@@ -98,3 +98,37 @@ Each struct stores:
 ## Notes
 - **Error Handling**: All functions validate that an image is loaded before proceeding. If no image is loaded, an error is printed.
 - **Memory Management**: All dynamic allocations ensure efficient memory usage, freeing unused memory when appropriate.
+
+---
+
+# Command Table
+
+| **Command**                    | **Situation**                      | **Message**                          |
+|--------------------------------|------------------------------------|--------------------------------------|
+| **LOAD <file>**                | Successful load                    | `Loaded <file>`                      |
+|                                | Encountered difficulties           | `Failed to load <file>`              |
+| **SELECT <x1> <y1> <x2> <y2>** | Correct selection                  | `Selected <x1> <y1> <x2> <y2>`       |
+|                                | Incorrect selection                | `Invalid set of coordinates`         |
+|                                | No file loaded                     | `No image loaded`                    |
+| **SELECT ALL**                 | Successful selection               | `Selected ALL`                       |
+|                                | No file loaded                     | `No image loaded`                    |
+| **ROTATE <angle>**             | Selection is not square            | `The selection must be square`       |
+|                                | Unsupported angle (not divisible by 90) | `Unsupported rotation angle`    |
+|                                | No file loaded                     | `No image loaded`                    |
+| **EQUALIZE**                   | Equalization successful            | `Equalization done`                  |
+|                                | Image is color                     | `Black and white image needed`       |
+|                                | No file loaded                     | `No image loaded`                    |
+| **CROP**                       | Operation successful               | `Image cropped`                      |
+|                                | No file loaded                     | `No image loaded`                    |
+| **APPLY <parameter>**          | Operation successful               | `APPLY <parameter> done`             |
+|                                | Image is grayscale                 | `Easy, Charlie Chaplin`              |
+|                                | Parameter missing                  | `APPLY parameter invalid`            |
+|                                | No file loaded                     | `No image loaded`                    |
+| **SAVE <file_name> [ascii]**   | Operation successful               | `Saved <file_name>`                  |
+|                                | No file loaded                     | `No image loaded`                    |
+| **HISTOGRAM <X> <Y>**          | Operation successful               | `Output conforms to requirements`    |
+|                                | Image is color                     | `Black and white image needed`       |
+|                                | Missing or invalid parameters      | `Invalid set of parameters`          |
+|                                | No file loaded                     | `No image loaded`                    |
+| **EXIT**                       | Any situation                      | `<nothing>`                          |
+| **Unknown command**            | Any situation                      | `Invalid command`                    |
